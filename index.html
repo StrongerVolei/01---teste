@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Landing Page</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="confetti.css">
+</head>
+
+<body>
+
+  <div class="confetti"></div>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
+    <script>
+      // Crie um array com as cores dos confetes
+      const colors = ["#FFC107", "#000000", "#FF5722"];
+
+      // Crie uma função para criar um novo confete
+      function createConfetti() {
+        // Crie um elemento de div para o confete
+        const confetti = document.createElement("div");
+
+        // Defina um tamanho e posição aleatória para o confete
+        confetti.style.width = Math.floor(Math.random() * 10 + 5) + "px";
+        confetti.style.height = Math.floor(Math.random() * 10 + 5) + "px";
+        confetti.style.position = "absolute";
+        confetti.style.top = "0";
+        confetti.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
+
+        // Escolha uma cor aleatória para o confete
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+        // Adicione o confete à página
+        document.body.appendChild(confetti);
+
+        // Anime o confete para cair até o final da tela
+        anime({
+          targets: confetti,
+          translateY: window.innerHeight + confetti.clientHeight,
+          duration: Math.floor(Math.random() * 2000 + 1000),
+          easing: "linear",
+          complete: function() {
+            // Remova o confete da página quando a animação terminar
+            document.body.removeChild(confetti);
+          }
+        });
+
+        // Crie um novo confete a cada 100 milissegundos
+        setTimeout(createConfetti, 33);
+      }
+
+      // Chame a função para criar os confetes
+      createConfetti();
+    </script>
+
+  <header>
+    <h1 class="headline">Heyy Voleizeiro<span> Parabéns</span> pela conquista!!</h1>
+    <h2 class="sub-headline">Fique na frente dos demais e saiba como <span>saltar mais alto</span> em 4 semanas!!</h2>
+  </header>
+  
+  <main>
+    <div class="video-container">
+      <video src="03 - VSL - UPSSEL.mp4" controls></video>
+    </div>
+      <button class="bottom-cta hidden">Quero saltar mais alto!</button>
+      
+      <br><br><br><br>
+    </main>
+
+
+
+    <style>
+
+.video-wrapper {
+    position: relative;
+  }
+  
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  
+  .play-button:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 30px solid #333;
+    margin-left: 4.5px;
+  }
+
+      /* Esconde a barra de reprodução */
+      video::-webkit-media-controls-timeline {
+        display: none !important;
+      }
+
+      /* Esconde a duração do vídeo */
+      video::-webkit-media-controls-time-remaining-display,
+      video::-webkit-media-controls-current-time-display {
+        display: none !important;
+      }
+            
+      /* Esconde a opção de pular o tempo */
+      video::-webkit-media-controls-skip-back-button,
+      video::-webkit-media-controls-skip-forward-button {
+        display: none !important;
+      }
+    </style>
+
+<script>
+  var playButton = document.querySelector(".play-button");
+  
+  playButton.addEventListener("click", function() {
+    if (video.paused) {
+      video.play();
+      playButton.style.display = "none";
+    } else {
+      video.pause();
+      playButton.style.display = "block";
+    }
+  });
+</script>
+  
+  <footer>
+    <p>&copy; Stronger Vôlei 2023. Todos os direitos reservados.</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>
